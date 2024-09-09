@@ -1,7 +1,7 @@
-import express, { Request, Response } from "express";
-import User from "./models/userModel";
+import express from "express";
 import config from "./config/config";
 import connectDB from "./config/db";
+import userRoutes from "./api/routes/user/index";
 
 const app = express();
 
@@ -11,10 +11,7 @@ connectDB();
 // Middleware
 app.use(express.json());
 
-app.get("/", async (req: Request, res: Response) => {
-  const users = await User.find().exec();
-  res.send(users);
-});
+app.use("/api/user", userRoutes);
 
 app.listen(config.port, () => {
   console.log(`Server running on port ${config.port}`);
