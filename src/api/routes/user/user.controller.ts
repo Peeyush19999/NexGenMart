@@ -62,7 +62,7 @@ export const registerUser = async (
 
     return res.status(201).json({ msg: "User registered successfully" });
   } catch (err) {
-    return res.status(500).send(err);
+    return res.status(500).send({ msg: "Internal server error" });
   }
 };
 
