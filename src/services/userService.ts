@@ -7,4 +7,17 @@ const getUserById = async (id: string) => {
   return await User.findById(id);
 };
 
-export default { getAllUser, getUserById };
+const getUserByEmail = async (email: string) => {
+  return await User.findOne({ email });
+};
+
+const getUserByMobile = async (mobileNumber: string) => {
+  return await User.findOne({ mobileNumber });
+};
+
+export default {
+  getAllUser,
+  getUserById,
+  getUserByEmail,
+  getUserByMobile,
+};
